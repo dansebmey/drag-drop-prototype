@@ -1,0 +1,120 @@
+[gd_scene load_steps=7 format=3 uid="uid://cs5x453dm77q"]
+
+[ext_resource type="PackedScene" uid="uid://brehcf7q3asq0" path="res://prefabs/tile.tscn" id="1_doj0g"]
+[ext_resource type="Script" path="res://scripts/dragdropper.gd" id="1_nx6im"]
+[ext_resource type="PackedScene" uid="uid://bjfmki4yr7wom" path="res://prefabs/piece.tscn" id="2_if87y"]
+[ext_resource type="Script" path="res://scripts/piece.gd" id="4_r14s8"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_pwvts"]
+size = Vector3(3, 0.5, 8)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bwcnj"]
+size = Vector3(1, 1, 2)
+
+[node name="Level" type="Node3D"]
+
+[node name="Meta" type="Node3D" parent="."]
+
+[node name="DragDropper" type="Node3D" parent="Meta" node_paths=PackedStringArray("tileParent")]
+script = ExtResource("1_nx6im")
+tileParent = NodePath("../../Board/Tiles")
+
+[node name="SpoofScript" type="Node3D" parent="Meta"]
+
+[node name="Board" type="Node3D" parent="."]
+
+[node name="Model" type="CSGMesh3D" parent="Board"]
+mesh = SubResource("BoxMesh_pwvts")
+
+[node name="SubtractShape1" type="CSGMesh3D" parent="Board/Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1)
+operation = 2
+mesh = SubResource("BoxMesh_bwcnj")
+
+[node name="SubtractShape2" type="CSGMesh3D" parent="Board/Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
+operation = 2
+mesh = SubResource("BoxMesh_bwcnj")
+
+[node name="Tiles" type="Node3D" parent="Board"]
+
+[node name="Tile" parent="Board/Tiles" node_paths=PackedStringArray("pieces") instance=ExtResource("1_doj0g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.25, 0.5)
+pieces = [NodePath("../../../Pieces/Piece")]
+
+[node name="Tile2" parent="Board/Tiles" instance=ExtResource("1_doj0g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.25, 1.5)
+
+[node name="Tile3" parent="Board/Tiles" node_paths=PackedStringArray("pieces") instance=ExtResource("1_doj0g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.25, 2.5)
+pieces = [NodePath("../../../Pieces/Piece2")]
+
+[node name="Tile4" parent="Board/Tiles" instance=ExtResource("1_doj0g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.25, 3.5)
+
+[node name="Tile5" parent="Board/Tiles" instance=ExtResource("1_doj0g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 3.5)
+
+[node name="Tile6" parent="Board/Tiles" instance=ExtResource("1_doj0g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 2.5)
+
+[node name="Tile7" parent="Board/Tiles" node_paths=PackedStringArray("pieces") instance=ExtResource("1_doj0g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 1.5)
+pieces = [NodePath("../../../Pieces/Piece3")]
+
+[node name="Tile8" parent="Board/Tiles" instance=ExtResource("1_doj0g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0.5)
+
+[node name="Tile9" parent="Board/Tiles" instance=ExtResource("1_doj0g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, -0.5)
+
+[node name="Tile10" parent="Board/Tiles" instance=ExtResource("1_doj0g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, -1.5)
+
+[node name="Tile11" parent="Board/Tiles" instance=ExtResource("1_doj0g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, -2.5)
+
+[node name="Tile12" parent="Board/Tiles" instance=ExtResource("1_doj0g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, -3.5)
+
+[node name="Tile13" parent="Board/Tiles" instance=ExtResource("1_doj0g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.25, -3.5)
+
+[node name="Tile14" parent="Board/Tiles" instance=ExtResource("1_doj0g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.25, -2.5)
+
+[node name="Tile15" parent="Board/Tiles" instance=ExtResource("1_doj0g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.25, 3.5)
+
+[node name="Tile16" parent="Board/Tiles" instance=ExtResource("1_doj0g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.25, 2.5)
+
+[node name="Tile17" parent="Board/Tiles" instance=ExtResource("1_doj0g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.25, 1.5)
+
+[node name="Tile18" parent="Board/Tiles" instance=ExtResource("1_doj0g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.25, 0.5)
+
+[node name="Tile19" parent="Board/Tiles" instance=ExtResource("1_doj0g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.25, -2.5)
+
+[node name="Tile20" parent="Board/Tiles" instance=ExtResource("1_doj0g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.25, -3.5)
+
+[node name="Pieces" type="Node3D" parent="."]
+
+[node name="Piece" parent="Pieces" instance=ExtResource("2_if87y")]
+script = ExtResource("4_r14s8")
+
+[node name="Piece2" parent="Pieces" instance=ExtResource("2_if87y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.35, 2.5)
+script = ExtResource("4_r14s8")
+
+[node name="Piece3" parent="Pieces" instance=ExtResource("2_if87y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 1.5)
+script = ExtResource("4_r14s8")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-3.78552e-08, -0.5, 0.866025, -2.18557e-08, 0.866025, 0.5, -1, 0, -4.37114e-08, 4.66976, 4, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera3D"]
